@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct details: View {
-    var libro: ComisModel
+    let seleccion: ComisModel
     var body: some View {
         VStack{
-            Image(libro.image).resizable().frame(width: 500)
-            Text(libro.name)
+            Image(seleccion.image).resizable().frame(width: 500)
+            Text(seleccion.name)
             TabView{
-                Tab("Sinopsis", systemImage: "info.circle.fill"){Sinopsis(libro: libro)}
+                Tab("Sinopsis", systemImage: "info.circle.fill"){Sinopsis(libro: seleccion)}
 
-                Tab("Capitulos", systemImage: "book.fill"){ Capitulos(libro : libro)}
+                Tab("Capitulos", systemImage: "book.fill"){ Capitulos(libro : seleccion)}
             }
         }
     }
 }
 
 #Preview {
-    details(libro: ComicViewModel().getComics()[1])
+    details(seleccion: ComicViewModel().getComics()[1])
 }

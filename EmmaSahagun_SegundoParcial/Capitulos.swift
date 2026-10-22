@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct Capitulos: View {
-    
     var libro: ComisModel
     var body: some View {
         ScrollView{
             VStack{
                 HStack{
                     Image(systemName: "heart")
-                        Text(libro.sinopsis)
+                    List(){
+                        Text(libro.name)
+                    }
                     }
                 }
         }
