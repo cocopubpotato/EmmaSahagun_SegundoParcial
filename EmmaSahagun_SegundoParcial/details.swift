@@ -10,18 +10,17 @@ import SwiftUI
 struct details: View {
     let seleccion: ComisModel
     var body: some View {
-        VStack{
-            Image(seleccion.image).resizable().frame(width: 500)
-            Text(seleccion.name)
+        VStack(alignment: HorizontalAlignment.center){
+            Image(seleccion.image).resizable().frame(width: 400)
             TabView{
                 Tab("Sinopsis", systemImage: "info.circle.fill"){Sinopsis(libro: seleccion)}
 
                 Tab("Capitulos", systemImage: "book.fill"){ Capitulos(libro : seleccion)}
-            }
-        }
+            }.frame(height: 500)
+        }.frame(width: 450).background(Color.black)
     }
 }
 
 #Preview {
-    details(seleccion: ComicViewModel().getComics()[1])
+    details(seleccion: ComicViewModel().getComics()[2])
 }

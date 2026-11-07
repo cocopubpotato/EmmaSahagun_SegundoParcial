@@ -10,20 +10,33 @@ import SwiftUI
 struct Sinopsis: View {
     var libro: ComisModel
     var body: some View {
+        
+        
         VStack{
-            Text(libro.sinopsis)
+            Spacer()
+            Text(libro.sinopsis).frame(width: 350)
             Spacer()
             Text("Que te parecio el comic")
-            HStack{
-                Image(.like).resizable().scaledToFit()
-                Image(.heart).resizable().scaledToFit()
-                Image(.meimporta).resizable().scaledToFit()
-                Image(.sad).resizable().scaledToFit()
-                Image(.angry).resizable().scaledToFit()
-                Image(.smile).resizable().scaledToFit()
-                Image(.amazing).resizable().scaledToFit()
-            }.frame(height: 40).padding()
-        }
+                
+                HStack{
+                    Image(.like).resizable().scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 20)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue,lineWidth: 3))
+                    Image(.heart).resizable().scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 20)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue,lineWidth: 3))
+                    Image(.meimporta).resizable().scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 20)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue,lineWidth: 3))
+                    Image(.sad).resizable().scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 20)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue,lineWidth: 3))
+                    Image(.angry).resizable().scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 20)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue,lineWidth: 3))
+                    Image(.smile).resizable().scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 20)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue,lineWidth: 3))
+                    Image(.amazing).resizable().scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 20)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue,lineWidth: 3))
+                }.frame(height: 40).padding()
+            
+        
+        }.frame(width: 450).background(Color.black).foregroundStyle(Color.white)
     }
 }
 
@@ -31,3 +44,4 @@ struct Sinopsis: View {
 #Preview {
     Sinopsis(libro: ComicViewModel().getComics()[1])
 }
+

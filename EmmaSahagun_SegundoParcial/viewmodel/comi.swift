@@ -16,5 +16,3 @@ struct ComisModel : Identifiable{
     let sinopsis: String
 
 }
-
-    
