@@ -15,7 +15,7 @@ struct details: View {
             TabView{
                 Tab("Sinopsis", systemImage: "info.circle.fill"){Sinopsis(libro: seleccion)}
 
-                Tab("Capitulos", systemImage: "book.fill"){ Capitulos(libro : seleccion)}
+                Tab("Capitulos", systemImage: "book.fill"){ Capitulos(comics: seleccion)}
             }.frame(height: 500)
         }.frame(width: 450).background(Color.black)
     }

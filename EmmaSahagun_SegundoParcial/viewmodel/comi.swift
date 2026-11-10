@@ -7,6 +7,7 @@
 
 import Foundation
 struct ComisModel : Identifiable{
+    let uurid: UUID = UUID()
     let id : Int
     let name: String
     let chaps: [Int]
@@ -16,3 +17,4 @@ struct ComisModel : Identifiable{
     let sinopsis: String
 
 }
+

@@ -8,32 +8,38 @@
 import SwiftUI
 
 struct Capitulos: View {
-    var libro: ComisModel
+    var comics : ComisModel
+    //@State var comics = ComicViewModel().getComics()
+    let icon = "heart"
     var body: some View {
         ScrollView{
             VStack(alignment: HorizontalAlignment.leading){
-                HStack{
-                    Image(systemName: "heart")
-                    VStack(alignment:.leading){
-                        Text("cap1")
-                        Text("pag24")
-                        Text("-----------------------------------------")
-                    }
+                ForEach(comics.chaps, id: \.self){ issue in
                     
-                }
-                HStack{
-                    Image(systemName: "heart")
-                    VStack(alignment:.leading){
-                        Text("cap31")
-                        Text("pag24")
-                        Text("-----------------------------------------")
+                    HStack{
+                        Image(systemName: "heart.fill")//.onTapGesture(perform: {if selected {icon = "heart"}})
+                        //ForEach(issue.chaps, id: \.self){ chap in
+                            VStack(alignment:.leading){
+                                Text("\(issue)")
+                                Text("\(issue) Pages")
+                                Text("-----------------------------------------")
+                            }
+                        //}
                     }
                 }
             }.frame(minWidth: 350).padding().background(Color.gray).clipShape(RoundedRectangle(cornerRadius: 20))
+
         }.frame(width: 500).background(Color.black)
+
+
+
+
     }
 }
 
 #Preview {
-    Capitulos(libro: ComicViewModel().getComics()[1])
+       Capitulos(comics: ComicViewModel().getComics()[0])
 }
+
+
+

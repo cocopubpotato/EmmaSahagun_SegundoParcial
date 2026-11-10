@@ -2,7 +2,7 @@ import SwiftUI
 import Playgrounds
 
 struct ContentView: View {
-    let comics = ComicViewModel().getComics()
+    @State var comics = ComicViewModel().getComics()
     var body: some View {
         
         Text("Batcave")
