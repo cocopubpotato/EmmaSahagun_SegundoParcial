@@ -10,11 +10,17 @@ struct ComisModel : Identifiable{
     let uurid: UUID = UUID()
     let id : Int
     let name: String
-    let chaps: [Int]
+    let chaps: [Chapter]
     let pags: [Int]
     let image: String
     let favs: String
     let sinopsis: String
+    
+    
 
 }
 
+struct Chapter:Hashable{
+    let chap: Int
+    let pages: Int
+}

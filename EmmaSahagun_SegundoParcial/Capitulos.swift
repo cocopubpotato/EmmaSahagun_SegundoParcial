@@ -8,25 +8,33 @@
 import SwiftUI
 
 struct Capitulos: View {
-    var comics : ComisModel
+    //var comics : ComisModel
     //@State var comics = ComicViewModel().getComics()
     let icon = "heart"
+    var libro : ComisModel
+
     var body: some View {
         ScrollView{
             VStack(alignment: HorizontalAlignment.leading){
-                ForEach(comics.chaps, id: \.self){ issue in
-                    
-                    HStack{
-                        Image(systemName: "heart.fill")//.onTapGesture(perform: {if selected {icon = "heart"}})
-                        //ForEach(issue.chaps, id: \.self){ chap in
-                            VStack(alignment:.leading){
-                                Text("\(issue)")
-                                Text("\(issue) Pages")
-                                Text("-----------------------------------------")
+                ForEach(libro.chaps, id: \.self){ paginas in
+                        VStack(alignment:.leading){
+                                HStack{
+                                    Image(systemName: "heart")//.onTapGesture(perform: {if selected {icon = "heart.fill"}})
+                                    Text(libro.name)
+                                    Text(paginas.chap.description)
+                                    
+                                }
+                            HStack{
+                                Text(paginas.pages.description)
+                                Text("Pages")
                             }
-                        //}
+                                }
+                            Text("-----------------------------------------")
+                                
+                                //}
+                            
+                        
                     }
-                }
             }.frame(minWidth: 350).padding().background(Color.gray).clipShape(RoundedRectangle(cornerRadius: 20))
 
         }.frame(width: 500).background(Color.black)
@@ -38,8 +46,9 @@ struct Capitulos: View {
 }
 
 #Preview {
-       Capitulos(comics: ComicViewModel().getComics()[0])
+       Capitulos(libro: ComicViewModel().getComics()[0])
 }
+
 
 
 
