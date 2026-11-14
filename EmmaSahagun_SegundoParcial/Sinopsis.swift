@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Sinopsis: View {
     var libro: ComisModel
-    
+    @State  var Reacts = ReactionsViewModel().getReact()
     
     var body: some View {
         
@@ -19,31 +19,40 @@ struct Sinopsis: View {
             Text(libro.sinopsis).frame(width: 350)
             Spacer()
             Text("Que te parecio el comic")
-                
-                HStack{
-                    Image(.like).resizable().scaledToFit()
+            HStack{
+            ForEach(Reacts, id: \.self){ reactions in
+                Image(reactions.image).resizable().scaledToFit()
                         .clipShape(RoundedRectangle(cornerRadius: 20)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue,lineWidth: 3))
-                    Image(.heart).resizable().scaledToFit()
-                        .clipShape(RoundedRectangle(cornerRadius: 20)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue,lineWidth: 3))
-                    Image(.meimporta).resizable().scaledToFit()
-                        .clipShape(RoundedRectangle(cornerRadius: 20)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue,lineWidth: 3))
-                    Image(.sad).resizable().scaledToFit()
-                        .clipShape(RoundedRectangle(cornerRadius: 20)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue,lineWidth: 3))
-                    Image(.angry).resizable().scaledToFit()
-                        .clipShape(RoundedRectangle(cornerRadius: 20)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue,lineWidth: 3))
-                    Image(.smile).resizable().scaledToFit()
-                        .clipShape(RoundedRectangle(cornerRadius: 20)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue,lineWidth: 3))
-                    Image(.amazing).resizable().scaledToFit()
-                        .clipShape(RoundedRectangle(cornerRadius: 20)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue,lineWidth: 3))
-                }.frame(height: 40).padding()
-            
-        
-        }.frame(width: 450).background(Color.black).foregroundStyle(Color.white)
+                }
+            }.frame(width: 350)
+        }
     }
 }
 
-
 #Preview {
     Sinopsis(libro: ComicViewModel().getComics()[1])
+}
+        
+struct imageborder: View {
+    @State var selected: Bool
+    
+    func getIcon() -> String{
+        if  selected{
+            
+            return "heart.fill"
+        }
+        else{
+            return  "heart"
+        }
+    }
+    
+    func changeIcon(){
+        selected.toggle()
+    }
+    var body: some View {
+        Image(systemName: getIcon()).onTapGesture {
+            self.changeIcon()
+        }
+    }
 }
 

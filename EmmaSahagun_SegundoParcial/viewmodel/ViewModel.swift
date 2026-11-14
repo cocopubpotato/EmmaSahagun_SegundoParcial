@@ -51,3 +51,18 @@ struct ComicViewModel {
     }
     
 }
+
+struct ReactionsViewModel{
+    func getReact()-> [Reactions]{
+        let react : [Reactions] = [
+            Reactions(id: 1, image: "like", state: false),
+            Reactions(id: 2, image: "heart", state: false),
+            Reactions(id: 3, image: "meimporta", state: false),
+            Reactions(id: 4, image: "sad", state: false),
+            Reactions(id: 5, image: "angry", state: false),
+            Reactions(id: 6, image: "smile", state: false),
+            Reactions(id: 7, image: "amazing", state: false)
+        ]
+        return react
+    }
+}
