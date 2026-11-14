@@ -11,9 +11,7 @@ struct ComisModel : Identifiable{
     let id : Int
     let name: String
     let chaps: [Chapter]
-    let pags: [Int]
     let image: String
-    let favs: String
     let sinopsis: String
     
     
@@ -23,4 +21,5 @@ struct ComisModel : Identifiable{
 struct Chapter:Hashable{
     let chap: Int
     let pages: Int
+    var favs: Bool
 }

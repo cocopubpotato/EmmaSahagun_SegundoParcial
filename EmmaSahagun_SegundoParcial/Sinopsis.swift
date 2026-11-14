@@ -9,6 +9,8 @@ import SwiftUI
 
 struct Sinopsis: View {
     var libro: ComisModel
+    
+    
     var body: some View {
         
         

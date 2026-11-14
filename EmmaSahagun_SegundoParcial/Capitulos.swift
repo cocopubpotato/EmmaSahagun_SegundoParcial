@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct Capitulos: View {
-    //var comics : ComisModel
-    //@State var comics = ComicViewModel().getComics()
-    let icon = "heart"
     var libro : ComisModel
 
     var body: some View {
@@ -19,7 +16,9 @@ struct Capitulos: View {
                 ForEach(libro.chaps, id: \.self){ paginas in
                         VStack(alignment:.leading){
                                 HStack{
-                                    Image(systemName: "heart")//.onTapGesture(perform: {if selected {icon = "heart.fill"}})
+                                 
+                                  images(libro: paginas)
+                                    
                                     Text(libro.name)
                                     Text(paginas.chap.description)
                                     
@@ -38,10 +37,6 @@ struct Capitulos: View {
             }.frame(minWidth: 350).padding().background(Color.gray).clipShape(RoundedRectangle(cornerRadius: 20))
 
         }.frame(width: 500).background(Color.black)
-
-
-
-
     }
 }
 
@@ -51,4 +46,28 @@ struct Capitulos: View {
 
 
 
+struct images: View {
+    @State var libro: Chapter
+    
+    func getIcon() -> String{
+        if  libro.favs{
+          return "heart.fill"
+        }
+        else{
+            return  "heart"
+        }
+    }
+    
+    func changeIcon(){
+        libro.favs.toggle()
+    }
+    
+    //@State var icon = "heart"
+    
 
+    var body: some View {
+        Image(systemName: getIcon()).onTapGesture {
+            self.changeIcon()
+        }
+    }
+}
