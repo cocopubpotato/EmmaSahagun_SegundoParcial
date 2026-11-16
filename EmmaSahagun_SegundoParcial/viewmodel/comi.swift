@@ -28,5 +28,5 @@ struct Reactions : Identifiable, Hashable{
     let uurid: UUID = UUID()
     let id: Int
     let image: String
-    let state: Bool
+    var state: Bool
 }

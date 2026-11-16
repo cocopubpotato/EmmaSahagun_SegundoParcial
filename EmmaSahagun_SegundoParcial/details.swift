@@ -11,7 +11,7 @@ struct details: View {
     let seleccion: ComisModel
     var body: some View {
         VStack(alignment: HorizontalAlignment.center){
-            Image(seleccion.image).resizable().frame(width: 400)
+            Image(seleccion.image).frame(width: 400,height: 300).scaledToFill()
             TabView{
                 Tab("Sinopsis", systemImage: "info.circle.fill"){Sinopsis(libro: seleccion)}
 

@@ -20,12 +20,15 @@ struct Sinopsis: View {
             Spacer()
             Text("Que te parecio el comic")
             HStack{
-            ForEach(Reacts, id: \.self){ reactions in
-                Image(reactions.image).resizable().scaledToFit()
-                        .clipShape(RoundedRectangle(cornerRadius: 20)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue,lineWidth: 3))
+                ForEach(Reacts.indices, id: \.self){ index in
+                    imageborder(
+                   selected: $Reacts[index]
+                        ,all: $Reacts)
+            
                 }
             }.frame(width: 350)
-        }
+            Spacer()
+        }.frame(width: 500).background(Color.black).foregroundStyle(Color.white)
     }
 }
 
@@ -34,24 +37,35 @@ struct Sinopsis: View {
 }
         
 struct imageborder: View {
-    @State var selected: Bool
-    
-    func getIcon() -> String{
-        if  selected{
-            
-            return "heart.fill"
-        }
-        else{
-            return  "heart"
-        }
-    }
-    
+    @Binding var selected: Reactions
+    @Binding var all: [Reactions]
     func changeIcon(){
-        selected.toggle()
+        
+        selected.state.toggle()
+        for index in all.indices{
+            
+            if all[index].id != selected.id{
+                all[index].state = false
+            }
+        }
+        print(selected.id)
+        
+        
     }
+    
+    
+    
     var body: some View {
-        Image(systemName: getIcon()).onTapGesture {
-            self.changeIcon()
+        if selected.state {
+            Image(selected.image).resizable().frame(width: 50,height: 50).scaledToFit()
+                .clipShape(RoundedRectangle(cornerRadius: 30)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.red,lineWidth: 4)).onTapGesture {
+                    changeIcon()
+                }
+        }else{
+            Image(selected.image).resizable().scaledToFit()
+                .clipShape(RoundedRectangle(cornerRadius: 20)).padding(2).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue,lineWidth: 3)).onTapGesture {
+                    changeIcon()
+                }
         }
     }
 }

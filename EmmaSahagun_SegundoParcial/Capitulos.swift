@@ -30,8 +30,6 @@ struct Capitulos: View {
                                 }
                             Text("-----------------------------------------")
                                 
-                                //}
-                            
                         
                     }
             }.frame(minWidth: 350).padding().background(Color.gray).clipShape(RoundedRectangle(cornerRadius: 20))
@@ -62,9 +60,6 @@ struct images: View {
         libro.favs.toggle()
     }
     
-    //@State var icon = "heart"
-    
-
     var body: some View {
         Image(systemName: getIcon()).onTapGesture {
             self.changeIcon()
